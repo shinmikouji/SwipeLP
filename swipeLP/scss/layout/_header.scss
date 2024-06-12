@@ -1,0 +1,30 @@
+@use "../global/mixin/breakpoint" as m;
+
+header {
+  left: 0;
+  padding: 2.15vw 2.7vw;
+  position: absolute;
+  top: 0;
+
+  @include m.mq(sp) {
+    left: 0;
+    padding: 0;
+    position: absolute;
+    top: 4%;
+    width: 100%;
+  }
+
+  .header-logo {
+    width: 8.5vw;
+
+    @include m.mq(sp) {
+      text-align: center;
+      width: 100%;
+
+      img {
+        height: 56px;
+        width: 114px;
+      }
+    }
+  }
+}

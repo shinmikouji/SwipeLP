@@ -1,0 +1,576 @@
+/* iPadpro */
+@media screen and (max-width: 1024px) {
+
+  #seminer .jumbotron {
+    width: 100%;
+    font-weight: 900;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: 0;
+    transform: translateY(-50%) translateX(-50%);
+     -webkit- transform: translateY(-50%) translateX(-50%);
+    text-align: center;
+  }
+
+}
+
+@media screen and (max-width: 991px) {
+
+/* font-size */
+
+  #lp .h3-ttl{
+    font-size: 4.5rem;
+  }
+
+  #lp .sub-ttl{
+    padding: 5px 30px;
+    font-size: 1.5rem;
+    margin: 0px 0 20px 0;
+  }
+  
+  #aboutus .h3-ttl{
+    font-size: 4rem;
+  }
+
+  #lp .txt-ttl {
+    font-size: 2rem;
+  }
+
+  #nudge-mkt .txt-in-2 {
+    font-size: 1.8rem;
+  }
+
+  #lp .txt-sub {
+    font-size: 1.7rem;
+  }
+
+  #lp .txt-list {
+    font-size: 1.8rem;
+  }
+  
+  #aboutus .about-txt-1 {
+    font-size: 1.5rem;
+  }
+
+  #aboutus .about-txt-2 {
+    font-size: .8rem;
+  }
+  
+  #nudge-mkt .small {
+    font-size: .2rem;
+  }
+  
+/* font-size end */
+
+  #howto .h3-ttl::after{
+    position: absolute;
+    top: -40px;
+    right: 0%;
+  }
+
+
+  /* seminer */
+  
+  #smn-inst .dis-lg-off{
+    display: none;
+  }
+
+  #smn-inst .dis-lg-on{
+    display: block;
+  }
+  
+  #seminer .seminer-btn-img{
+    width: 50%;
+  }
+}
+
+/* ipad以下 */
+@media screen and (max-width: 768px) {
+  #nudge-mkt .nudge-mkt-inner {
+    text-align: center;
+    padding: 0;
+  }
+  
+  /* ここから */
+  .col-point{
+    flex-direction: column;
+  }
+
+  .point-img, .point-img-rev {
+    margin: 0;
+    text-align: center;
+  }
+
+  .point-list {
+    margin-top: 20px;
+    align-self: center;
+  }
+
+  #howto .h3-ttl::after{
+    display: none;
+  }
+  
+  .easy-col, .easy-col-rev {
+    flex-direction: column;
+  }
+  
+  .easy-img, .easy-img-rev{
+    margin-left: 0px;
+    width: fit-content;
+    align-self: center;
+    height: 200px;
+    object-fit: contain;
+  }
+
+  /**************
+   seminer
+  ***************/
+  
+  #seminer .seminer-btn-img{
+    width: 80%;
+  }
+
+  #seminer .jumbotron .h1-ttl {
+    font-size: 4rem;
+  }
+
+  #seminer .jumbotron .h1-ttl .new {
+    padding: 10px 25px;
+    font-size: 3.5rem;
+    margin: 0px 20px 0 0;
+    letter-spacing: .4rem; 
+  }
+  
+  #smn-des,
+  #smn-rel,
+  #smn-ex
+  {
+  padding: 0 0 50px 0;
+  font-size: 1.8rem;
+  }
+
+  #seminer .h3-ttl {
+    font-size: 4.5rem;
+  }
+
+  #seminer .txt-ttl {
+    font-size: 3.5rem;
+  }
+
+  #smn-des ul li:last-child, 
+  #smn-ex ul li:last-child
+  {
+    font-size: 2.5rem;
+  }
+
+  .smn-bkimg{
+   display: none;
+  }
+}
+
+@media screen and (max-width: 600px){
+  
+  .jumbotron {
+    font-weight: 700;
+    text-align: end;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    top:50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+   -webkit- transform: translateY(-50%) translateX(-50%);
+  }
+
+  .contact{
+    width: 80%;
+    position: absolute;
+    top:90%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+     -webkit- transform: translateY(-50%) translateX(-50%);
+  }
+
+  /**************
+   seminer
+  ***************/
+  
+  #seminer .jumbotron .h1-ttl {
+    font-size: 1.8rem;
+  }
+
+  #seminer .jumbotron .h1-ttl span {
+    font-size: 3rem;
+  }
+
+  #seminer .jumbotron .h1-ttl .new {
+    padding: 5px 10px;
+    font-size: 1.3rem;
+    margin: 0px 10px 0 0;
+    letter-spacing: .4rem; 
+  }
+  
+  #seminer .sub-ttl .new-sub {
+    display: inline-block;
+    background-color: #0030A0;
+    padding: 2px 8px;
+    color: #FFFFFF;
+    font-size: 1rem;
+    /* border-radius: 20px; */
+    margin: 0px 5px 0 0;
+    letter-spacing: .2rem; 
+  }
+
+  #seminer .seminer-btn-top {
+    position: absolute;
+    top: 75%;
+  }
+
+  #smn-des,
+  #smn-rel,
+  #smn-ex
+  {
+  padding: 0 0 50px 0;
+  font-size: 1.2rem;
+  }
+
+  #seminer .h3-ttl {
+    font-size: 2.5rem; 
+  }
+
+  #seminer .ttl-back {
+    padding: 3rem 0;
+  }
+
+  #seminer .txt-ttl {
+    font-size: 2rem;
+  }
+
+  #seminer .sub-ttl {
+    font-size: 1.2rem;
+  }
+
+  #smn-des ul li:last-child, 
+  #smn-ex ul li:last-child
+  {
+    font-size: 1.5rem;
+  }
+
+  #smn-des h4 .txt-ttl::before{
+    position: absolute;
+    left: -40px;
+  }
+  
+  #smn-des h4 .txt-ttl::after{
+    position: absolute;
+    right: -40px;
+  }
+  
+
+  #smn-rel h4 .txt-ttl::before{
+    position: absolute;
+    left: -30px;
+  }
+  
+  #smn-rel h4 .txt-ttl::after{
+    position: absolute;
+    right: -30px;
+  }
+  
+  
+}
+
+@media screen and (max-width: 575px) {
+  
+  footer .footer-logo {
+    text-align: center;
+  }
+  
+  footer .footer-txt {
+    text-align: center;
+  }
+
+  #easytouse h4::before{
+    content: '';
+    background: url(../imges/lp/line_left.png) no-repeat;
+    background-size: contain;
+    position: absolute;
+    top: 7px;
+    left: 0;
+    width: 40px;
+    height: 80px;
+  }
+    
+  #easytouse h4::after{
+    content: '';
+    background: url(../imges/lp/line_right.png) no-repeat;
+    background-size: contain;
+    position: absolute;
+    top: 15px;
+    right: 0;
+    width: 40px;
+    height: 80px;
+  }
+    
+}
+
+/* sp */
+@media screen and (max-width: 414px) {
+  
+  .jumbotron .h1-ttl {
+    color: #ffffff;
+    font-size: 3rem;
+    margin-bottom: 30px;
+  }
+
+  .jumbotron .h2-ttl{
+    font-size: 1.5rem;
+  }
+ 
+  #lp .h3-ttl{
+    font-size: 3rem;
+  }
+
+  #lp .sub-ttl{
+    padding: 5px 30px;
+    font-size: 1rem;
+    margin: 0px 0 20px 0;
+  }
+
+  #aboutus .h3-ttl{
+    font-size: 2.5rem;
+  }
+
+  #aboutus .sub-ttl{
+    padding: 4px 20px;
+    color: #001A51;
+    font-size: .7rem;
+    margin: 0px 0 20px 0;
+  }
+  
+  #lp .txt-ttl {
+    font-size: 2rem;
+  }
+
+  #nudge-mkt .txt-in-2 {
+    font-size: 1.5rem;
+  }
+
+  #lp .txt-sub {
+    font-size: 1.2rem;
+  }
+
+  #lp .txt-list {
+    font-size: 1.4rem;
+  }
+
+  #nudge-mkt .small {
+    font-size: .5rem;
+  }
+
+  #aboutus .about-txt-1 {
+    font-size: 1.5rem;
+  }
+
+  #aboutus .about-txt-2 {
+    font-size: .8rem;
+  }
+
+  .lp-logo-white {
+    width: fit-content;
+  }
+
+  #easytouse h4::before{
+    display: none;
+  }
+    
+  #easytouse h4::after{
+    display: none;
+  }
+
+  #lp .copy {
+    font-size: .6rem;
+  }
+
+  /**************
+   seminer
+  ***************/
+  #seminer .main-backimg{
+    height: 70vh;
+  } 
+  
+  #seminer .jumbotron {
+    position: absolute;
+    top: 40%;
+  }
+
+  #seminer .jumbotron .h1-ttl {
+    font-size: 1.8rem;
+  }
+
+  #seminer .jumbotron .h1-ttl span {
+    font-size: 3rem;
+  }
+
+  #seminer .jumbotron .h1-ttl .new {
+    padding: 5px 10px;
+    font-size: 1.3rem;
+    margin: 0px 10px 0 0;
+    letter-spacing: .4rem; 
+  }
+  
+  #seminer .sub-ttl .new-sub {
+    display: inline-block;
+    background-color: #0030A0;
+    padding: 2px 8px;
+    color: #FFFFFF;
+    font-size: 1rem;
+    /* border-radius: 20px; */
+    margin: 0px 5px 0 0;
+    letter-spacing: .2rem; 
+  }
+
+  #seminer .seminer-btn-top {
+    position: absolute;
+    top: 60%;
+  }
+
+  #smn-des,
+  #smn-rel,
+  #smn-ex
+  {
+  padding: 0 0 50px 0;
+  font-size: 1.2rem;
+  }
+
+  #seminer .h3-ttl {
+    font-size: 2.5rem; 
+  }
+
+  #seminer .ttl-back {
+    padding: 3rem 0;
+  }
+
+  #seminer .txt-ttl {
+    font-size: 2rem;
+  }
+
+  #seminer .sub-ttl {
+    font-size: 1.2rem;
+  }
+
+  #smn-des ul li:last-child, 
+  #smn-ex ul li:last-child
+  {
+    font-size: 1.5rem;
+  }
+
+  #smn-des h4 .txt-ttl::before{
+    position: absolute;
+    left: -40px;
+  }
+  
+  #smn-des h4 .txt-ttl::after{
+    position: absolute;
+    right: -40px;
+  }
+  
+
+  #smn-rel h4 .txt-ttl::before{
+    position: absolute;
+    left: -30px;
+  }
+  
+  #smn-rel h4 .txt-ttl::after{
+    position: absolute;
+    right: -30px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+
+/**************
+   seminer
+  ***************/
+  
+  #seminer .jumbotron .h1-ttl {
+    font-size: 1.8rem;
+  }
+
+  #seminer .jumbotron .h1-ttl span {
+    font-size: 2rem;
+  }
+
+  #seminer .jumbotron .h1-ttl .new {
+    padding: 5px 10px;
+    font-size: 1.3rem;
+    margin: 0px 10px 0 0;
+    letter-spacing: .4rem; 
+  }
+  
+  #seminer .sub-ttl .new-sub {
+    display: inline-block;
+    background-color: #0030A0;
+    padding: 2px 8px;
+    color: #FFFFFF;
+    font-size: 1rem;
+    /* border-radius: 20px; */
+    margin: 0px 5px 0 0;
+    letter-spacing: .2rem; 
+  }
+
+  #seminer .seminer-btn-top {
+    position: absolute;
+    top: 65%;
+  }
+
+  #smn-des,
+  #smn-rel,
+  #smn-ex
+  {
+  padding: 0 0 50px 0;
+  font-size: 1rem;
+  }
+
+  #seminer .h3-ttl {
+    font-size: 2rem; 
+  }
+
+  #seminer .txt-ttl {
+    font-size: 1.6rem;
+  }
+
+  #seminer .sub-ttl {
+    font-size: 1rem;
+  }
+
+  #smn-des ul li:last-child, 
+  #smn-ex ul li:last-child
+  {
+    font-size: 1.4rem;
+  }
+
+  #smn-des h4 .txt-ttl::before{
+    position: absolute;
+    left: -40px;
+  }
+  
+  #smn-des h4 .txt-ttl::after{
+    position: absolute;
+    right: -40px;
+  }
+  
+
+  #smn-rel h4 .txt-ttl::before{
+    position: absolute;
+    left: -30px;
+  }
+  
+  #smn-rel h4 .txt-ttl::after{
+    position: absolute;
+    right: -30px;
+  }
+  
+
+}

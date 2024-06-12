@@ -1,0 +1,149 @@
+@use "../global/mixin/breakpoint" as m;
+
+.sidebar {
+  background: linear-gradient(#0072ad, #07c1d0);
+  text-align: center;
+  position: relative;
+  width: 23vw;
+
+  @include m.mq(sp) {
+    height: 100%;
+    text-align: center;
+    position: fixed;
+    width: 100vw;
+    z-index: 98;
+  }
+
+  .sidebar-inner {
+    top: 2%;
+    position: fixed;
+
+    // @include m.mq(sp) {
+    //   left: 50%;
+    //   top: 2%;
+    //   transform: translate(-50%, 0);
+    //   position: fixed;
+    //   width: 80%;
+    // }
+
+    img {
+      width: 80%;
+
+      // @include m.mq(sp) {
+      //   width: 75%;
+      // }
+    }
+
+    .sidebar-demo {
+      height: 60vh;
+      left: 0;
+      position: relative;
+      top: 0;
+      width: 100%;
+      z-index: 98;
+
+      @include m.mq(tab) {
+        height: 40vh;
+      }
+
+      @include m.mq(sp) {
+        height: 70vh;
+      }
+
+      @include m.mq(sidebarPc) {
+        height: 51vh;
+      }
+
+      img {
+        height: 60.3vh;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, 0);
+        width: 16vw;
+
+        @include m.mq(tab) {
+          height: 40.3vh;
+        }
+
+        @include m.mq(sp) {
+          height: 70vh;
+          width: 65vw;
+        }
+
+        @include m.mq(sidebarPc) {
+          height: 50vh;
+        }
+      }
+
+      iframe {
+        width: 14.7vw;
+        height: 48.6vh;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, 0);
+        top: 9.8%;
+
+        @include m.mq(tab) {
+          height: 31.1vh;
+        }
+
+        @include m.mq(sp) {
+          height: 56.3vh;
+          width: 58.7vw;
+        }
+
+        @include m.mq(sidebarPc) {
+          height: 39.3vh;
+        }
+      }
+    }
+
+    a {
+      align-items: center;
+      background: linear-gradient(to right, #d751dd, #8916c7);
+      border-radius: 5px;
+      color: #fff;
+      display: grid;
+      font-size: 0.95vw;
+      font-weight: bold;
+      gap: 0.4vw;
+      grid-template-columns: max-content 1fr;
+      margin: 3.5vw auto 0;
+      padding: 0.75vw 1vw;
+      width: 85%;
+    }
+  }
+
+  @include m.mq(sp) {
+    .sidebar-demo-sp {
+      bottom: 0;
+      height: 87vh;
+      left: 0;
+      position: absolute;
+      width: 100%;
+
+      iframe {
+        bottom: 0;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        width: 100%;
+      }
+    }
+  }
+}
+
+@include m.mq(sp) {
+  .sidebar.hidden {
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    transition: opacity 0.5s;
+  }
+
+  .sidebar.visible {
+    visibility: visible;
+    opacity: 1;
+  }
+}

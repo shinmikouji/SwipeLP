@@ -1,0 +1,13 @@
+@use "../global/mixin/breakpoint" as m;
+
+.pc-only {
+  @include m.mq(sp) {
+    display: none !important;
+  }
+}
+
+.sp-only {
+  @include m.mq(pc) {
+    display: none !important;
+  }
+}

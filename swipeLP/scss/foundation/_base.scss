@@ -1,0 +1,17 @@
+@use "../global/mixin/breakpoint" as m;
+
+html {
+  color: #1a2f53;
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+.container {
+  display: flex;
+}
+
+.main {
+  width: 77vw;
+  @include m.mq(sp) {
+    width: 100%;
+  }
+}

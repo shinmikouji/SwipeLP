@@ -1,0 +1,100 @@
+@use "../global/mixin/breakpoint" as m;
+
+.footer {
+  background: #f6fafc;
+  padding: 5.5vw 0;
+
+  @include m.mq(sp) {
+    padding: 80px 16px;
+  }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 82%;
+
+    @include m.mq(sp) {
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+
+  .footer-left {
+    @include m.mq(sp) {
+      text-align: center;
+    }
+
+    h3 {
+      font-size: 1.7vw;
+
+      @include m.mq(sp) {
+        font-size: 24px;
+      }
+    }
+
+    .footer-left-text01 {
+      font-size: 0.9vw;
+      margin-top: 0.8vw;
+
+      @include m.mq(sp) {
+        font-size: 14px;
+        line-height: 1.6;
+        margin-top: 14px;
+      }
+    }
+
+    .footer-left-text02 {
+      font-size: 0.9vw;
+      margin-top: 2vw;
+
+      @include m.mq(sp) {
+        font-size: 14px;
+        margin-top: 40px;
+      }
+    }
+
+    a {
+      display: inline-block;
+      font-size: 1.55vw;
+      font-weight: bold;
+      margin-top: 1.1vw;
+
+      @include m.mq(sp) {
+        font-size: 28px;
+      }
+    }
+  }
+
+  .footer-right {
+    align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    @include m.mq(sp) {
+      align-items: center;
+      margin-top: 56px;
+    }
+
+    img {
+      margin-right: 0.4vw;
+      width: 45%;
+
+      @include m.mq(sp) {
+        margin-right: 0;
+        width: 80%;
+      }
+    }
+
+    p {
+      font-size: 0.8vw;
+      margin-top: 1.2vw;
+
+      @include m.mq(sp) {
+        font-size: 12px;
+        margin-top: 20px;
+      }
+    }
+  }
+}

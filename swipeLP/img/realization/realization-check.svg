@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="22" viewBox="0 0 25 22">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#07c1d0"/>
+      <stop offset="1" stop-color="#0072ad"/>
+    </linearGradient>
+  </defs>
+  <g id="チェックボックスのフリーアイコン_1_" data-name="チェックボックスのフリーアイコン (1)" transform="translate(0 -35.492)">
+    <path id="パス_1678" data-name="パス 1678" d="M22.92,35.492c-6.607,3.75-13.3,14.417-13.3,14.417l-6.035-7L0,46.409,8.727,57.492l3.181-.125A54.748,54.748,0,0,1,25,36.492Z" fill="url(#linear-gradient)"/>
+  </g>
+</svg>

@@ -1,0 +1,16 @@
+@charset "UTF-8";
+// foundation
+@use "../scss/foundation/base";
+@use "../scss/foundation/reset";
+
+// layout
+@use "../scss/layout/header";
+@use "../scss/layout/footer";
+@use "../scss/layout/sidebar";
+
+// object
+@use "../scss/object/sub-title";
+@use "../scss/object/display";
+
+// pages
+@use "../scss/pages/top";
