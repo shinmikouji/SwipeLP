@@ -204,6 +204,10 @@
 .news {
   padding: 10vw 7.5vw 5vw;
 
+  @include m.mq(sp) {
+    padding: 80px 16px;
+  }
+
   .news-head {
     align-items: center;
     display: flex;
@@ -218,6 +222,11 @@
       padding-bottom: 0.6vw;
       position: relative;
 
+      @include m.mq(sp) {
+        font-size: 24px;
+        padding-bottom: 12px;
+      }
+
       &:after {
         background: #07c1d0;
         bottom: 0;
@@ -227,6 +236,11 @@
         left: 0%;
         position: absolute;
         width: 4vw;
+
+        @include m.mq(sp) {
+          height: 3px;
+          width: 80%;
+        }
       }
     }
 
@@ -237,12 +251,21 @@
       font-weight: bold;
       gap: 1.1vw;
       grid-template-columns: 1fr max-content;
+
+      @include m.mq(sp) {
+        font-size: 14px;
+        gap: 16px;
+      }
     }
   }
 
   .news-swiper {
     margin-top: 2.3vw;
     width: 100%;
+
+    @include m.mq(sp) {
+      margin-top: 48px;
+    }
 
     .news-swiper-list {
       width: 100%;
@@ -251,24 +274,35 @@
     .news-swiper-items a {
       img {
         height: 14vw;
+
+        @include m.mq(sp) {
+          height: 157px;
+        }
       }
 
       time {
         display: inline-block;
         font-size: 1vw;
         margin-top: 0.8vw;
+
+        @include m.mq(sp) {
+          font-size: 12px;
+          margin-top: 8px;
+        }
       }
 
       p {
         display: -webkit-box;
-        /* 必要なflexbox形式 */
         -webkit-box-orient: vertical;
-        /* 垂直方向に配置 */
         -webkit-line-clamp: 2;
-        /* 表示する行数 */
         font-size: 1.15vw;
         font-weight: bold;
         margin-top: 0.5vw;
+
+        @include m.mq(sp) {
+          font-size: 14px;
+          margin-top: 8px;
+        }
       }
     }
 
@@ -280,6 +314,7 @@
 
     .swiper-button-prev {
       left: 0;
+      top: 35%;
 
       &::after {
         content: "";
@@ -288,6 +323,7 @@
 
     .swiper-button-next {
       right: 0;
+      top: 35%;
 
       &::after {
         content: "";
@@ -466,7 +502,7 @@
   }
 
   .cvr-chart-title {
-    background: #0072ad;
+    background: #07C1D0;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     color: #fff;
@@ -634,8 +670,8 @@
 }
 
 /* バナー */
+/* 共通 */
 .banner {
-  background: #0072ad;
   padding: 5.5vw 10.5vw;
 
   @include m.mq(sp) {
@@ -686,10 +722,54 @@
       font-size: 32px;
       margin-top: 22px;
     }
+  }
 
-    span {
-      color: #07c1d0;
+  .banner-inner-right {
+    @include m.mq(sp) {
+      margin-top: 40px;
+      text-align: center;
     }
+
+    img {
+      width: 14vw;
+
+      @include m.mq(sp) {
+        width: 60%;
+      }
+    }
+  }
+}
+
+/* バナー2 */
+.banner-dark-blue {
+  background: #1A2F53;
+
+  .banner-inner-left-text02 span {
+    color: #0072AD;
+  }
+
+  .banner-inner-left-button {
+    align-items: center;
+    background: linear-gradient(to right, #d751dd, #8916c7);
+    border-radius: 5px;
+    color: #fff;
+    display: grid;
+    font-size: 0.95vw;
+    font-weight: bold;
+    gap: 0.4vw;
+    grid-template-columns: max-content 1fr;
+    margin: 2.5vw auto 0;
+    padding: 1vw;
+    width: 55%;
+  }
+}
+
+/* バナー2 */
+.banner-light-blue {
+  background: #0072ad;
+
+  .banner-inner-left-text02 span {
+    color: #07c1d0;
   }
 
   .banner-inner-left-button {
@@ -707,21 +787,6 @@
       font-size: 16px;
       margin-top: 40px;
       padding: 16px 56px;
-    }
-  }
-
-  .banner-inner-right {
-    @include m.mq(sp) {
-      margin-top: 40px;
-      text-align: center;
-    }
-
-    img {
-      width: 14vw;
-
-      @include m.mq(sp) {
-        width: 60%;
-      }
     }
   }
 }

@@ -33,8 +33,7 @@
 <body>
   <!-- Googleタグマネージャー（noscript） -->
   <noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M4W36TR"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M4W36TR" height="0" width="0" style="display:none;visibility:hidden"></iframe>
   </noscript>
   <!-- Googleタグマネージャー終了 -->
   <?php wp_body_open(); ?>
@@ -96,7 +95,7 @@
         </div>
       </section>
       <!-- TODO 別対応 -->
-      <!-- <section class="news">
+      <section class="news">
         <div class="news-head">
           <h2>News</h2>
           <a href="<?php echo esc_url(home_url('/news')); ?>" class="news-button">
@@ -140,14 +139,14 @@
             <?php else : ?>
             <?php endif; ?>
           </ul>
-          <div class="swiper-button-prev">
+          <div class="swiper-button-prev pc-only">
             <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/news/news-left-arrow.svg" alt="">
           </div>
-          <div class="swiper-button-next">
+          <div class="swiper-button-next pc-only">
             <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/news/news-right-arrow.svg" alt="">
           </div>
         </div>
-      </section> -->
+      </section>
       <section class="realization">
         <div class="realization-left">
           <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/realization/realization-image.png" alt="">
@@ -227,7 +226,7 @@
           <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/cvr/cvr-01.png" class="cvr-chart-arrow" alt="">
         </div>
       </section>
-      <section class="banner">
+      <section class="banner banner-light-blue">
         <div class="banner-inner">
           <div class="banner-inner-left">
             <p class="banner-inner-left-text01">
@@ -483,6 +482,25 @@
           </li>
         </ul>
       </section>
+      <section class="banner banner-dark-blue">
+        <div class="banner-inner">
+          <div class="banner-inner-left">
+            <p class="banner-inner-left-text01">
+              ワクワク感を提供できるSwipeLPを使えば
+            </p>
+            <p class="banner-inner-left-text02">
+              <span>CVRの向上を実現</span>できます！
+            </p>
+            <a href="<?php echo esc_url(home_url('/reservation')); ?>" class="banner-inner-left-button" target="_blank">
+              <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/sidebar/sidebar-mail.svg" alt="">
+              無料デモ作成依頼はこちらから
+            </a>
+          </div>
+          <div class="banner-inner-right">
+            <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/banner/banner-01.png" alt="">
+          </div>
+        </div>
+      </section>
       <section class="delivery-banner">
         <div class="delivery-banner-inner">
           <h2 class="sub-title">SwipeLPデモ画面</h2>
@@ -562,7 +580,7 @@
           </ul>
         </div>
       </section>
-      <section class="banner">
+      <section class="banner banner-light-blue">
         <div class="banner-inner">
           <div class="banner-inner-left">
             <p class="banner-inner-left-text01">
@@ -656,7 +674,8 @@
       <div class="sidebar-inner pc-only">
         <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/sidebar/sidebar-01.png" alt="">
         <div class="sidebar-demo">
-          <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/sidebar/sidebar-mobile.png" alt="">
+          <!-- スマホの画像一旦削除 -->
+          <!-- <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/sidebar/sidebar-mobile.png" alt=""> -->
           <iframe src="https://demo.swipe-lp.io/?id=13"></iframe>
         </div>
         <a href="<?php echo esc_url(home_url('/reservation')); ?>" class="pc-only" target="_blank">
@@ -672,8 +691,8 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="<?php echo get_template_directory_uri(); ?>/swipeLP/js/main.js"></script>
-    <script src="<?php echo get_template_directory_uri(); ?>/swipeLP/js/chart.js"></script>
-    <script src="<?php echo get_template_directory_uri(); ?>/swipeLP/js/swiper.js"></script>
+  <script src="<?php echo get_template_directory_uri(); ?>/swipeLP/js/chart.js"></script>
+  <script src="<?php echo get_template_directory_uri(); ?>/swipeLP/js/swiper.js"></script>
   <?php wp_footer(); ?>
 </body>
 

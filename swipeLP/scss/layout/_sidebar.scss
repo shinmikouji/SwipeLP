@@ -54,26 +54,27 @@
         height: 51vh;
       }
 
-      img {
-        height: 60.3vh;
-        left: 50%;
-        position: absolute;
-        transform: translate(-50%, 0);
-        width: 16vw;
+      // スマホの画像一旦削除
+      // img {
+      //   height: 60.3vh;
+      //   left: 50%;
+      //   position: absolute;
+      //   transform: translate(-50%, 0);
+      //   width: 16vw;
 
-        @include m.mq(tab) {
-          height: 40.3vh;
-        }
+      //   @include m.mq(tab) {
+      //     height: 40.3vh;
+      //   }
 
-        @include m.mq(sp) {
-          height: 70vh;
-          width: 65vw;
-        }
+      //   @include m.mq(sp) {
+      //     height: 70vh;
+      //     width: 65vw;
+      //   }
 
-        @include m.mq(sidebarPc) {
-          height: 50vh;
-        }
-      }
+      //   @include m.mq(sidebarPc) {
+      //     height: 50vh;
+      //   }
+      // }
 
       iframe {
         width: 14.7vw;
