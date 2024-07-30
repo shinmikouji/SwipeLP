@@ -1,4 +1,4 @@
-<?php /* Template Name:swipeLP  */ ?>
+<?php /* Template Name:SwipeLP  */ ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 
@@ -6,6 +6,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SwipeLP</title>
+  <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/swipeLP/img/favicon.ico" />
+  <link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/swipeLP/img/favicon.ico" />
   <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/swipeLP/css/style.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
@@ -41,7 +43,9 @@
     <main class="main">
       <header>
         <div class="header-logo">
-          <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/header/logo.png" alt="">
+          <a href="<?php echo esc_url(home_url('/swipeLP/swipeLP')); ?>">
+            <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/header/logo.png" alt="">
+          </a>
         </div>
       </header>
       <!-- TODO チャットボットの作成があるまで非表示 -->
@@ -73,9 +77,33 @@
             スマートフォンに最適化した次世代型LPです。<br />
             ワクワク感を提供することにより<br class="sp-only">CVRがアップします。
           </p>
-          <a href="https://fukko.jp/contact/" class="introduction-bottom-button" target="_blank">
-            お問い合わせはこちら
-          </a>
+          <ul class="introduction-linkArea">
+            <li>
+              <a href="https://fukko.jp/contact/" target="_blank">
+                <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/contact/contact-mail.svg" alt="">
+                <p>フォームからの<br />お問い合わせはこちら</p>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.chatwork.com/fukko_SwipeLP" target="_blank">
+                <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/contact/contact-chatwork.svg" class="pc-only" alt="">
+                <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/contact/contact-chatwork-sp.svg" class="sp-only" alt="">
+                <p>チャットワークでの<br />お問い合わせはこちら</p>
+              </a>
+            </li>
+            <li>
+              <a href="https://page.line.me/962kdjus?oat_content=url&openQrModal=true" target="_blank">
+                <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/contact/contact-line.svg" alt="">
+                <p>LINEでの<br />お問い合わせはこちら</p>
+              </a>
+            </li>
+            <li>
+              <a href="https://fukko-swipelp.noco.sale/share/d/01J1P87JMKB3SZMSCH5QZ4JH8T" target="_blank">
+                <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/contact/contact-pdf.svg" alt="">
+                <p>資料ダウンロードは<br />こちらから</p>
+              </a>
+            </li>
+          </ul>
         </div>
         <div class="introduction-right">
           <div class="introduction-right-textArea">
@@ -94,18 +122,17 @@
           </div>
         </div>
       </section>
-      <!-- TODO 別対応 -->
-      <section class="news">
-        <div class="news-head">
+      <section class="top-news">
+        <div class="top-news-head fadeUpTrigger">
           <h2>News</h2>
-          <a href="<?php echo esc_url(home_url('/news')); ?>" class="news-button">
+          <a href="<?php echo get_post_type_archive_link('news'); ?>" class="news-button">
             <p>一覧を見る</p>
             <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/news/news-button.svg" alt="">
           </a>
         </div>
         <?php
         $args = array(
-          'post_type' => 'post',
+          'post_type' => 'news',
           'posts_per_page' => 10,
         );
         $news_query = new WP_Query($args);
@@ -114,21 +141,13 @@
           <ul class="swiper-wrapper news-swiper-list">
             <?php if ($news_query->have_posts()) : ?>
               <?php while ($news_query->have_posts()) : $news_query->the_post(); ?>
-                <li class="swiper-slide news-swiper-items">
-                  <a href="">
-                    <?php
-                    // 記事内容から最初の画像を取得
-                    $content = get_the_content();
-                    $img_src = '';
-
-                    // パターンマッチングを使って最初の画像を取得
-                    preg_match('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $content, $matches);
-                    if (!empty($matches[1])) {
-                      $img_src = $matches[1];
-                    } else {
-                      $img_src = get_template_directory_uri() . '/swipeLP/img/thumbnail.png';
-                    }
-                    ?>
+                <li class="swiper-slide news-swiper-items flipLeftTrigger">
+                  <a href="<?php the_permalink(); ?>">
+                    <?php if (has_post_thumbnail()) : ?>
+                      <?php the_post_thumbnail('custom-thumb', array('class' => 'news-swiper-items-image')); ?>
+                    <?php else : ?>
+                      <img src="<?php echo get_theme_file_uri('/swipeLP/img/news-default.png"'); ?>" class="news-swiper-items-image">
+                    <?php endif; ?>
                     <img src="<?php echo esc_url($img_src); ?>" alt="">
                     <time><?php echo get_the_date("Y.m.d"); ?></time>
                     <p><?php the_title() ?></p>
@@ -137,6 +156,7 @@
               <?php endwhile;
               wp_reset_postdata(); ?>
             <?php else : ?>
+              <p class="news-text-none">記事がありません</p>
             <?php endif; ?>
           </ul>
           <div class="swiper-button-prev pc-only">
@@ -149,11 +169,11 @@
       </section>
       <section class="realization">
         <div class="realization-left">
-          <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/realization/realization-image.png" alt="">
+          <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/realization/realization-image.png" class="flipLeftTrigger" alt="">
         </div>
         <div class="realization-right">
           <ul>
-            <li>
+            <li class="fadeUpTrigger">
               <p>
                 まるで店舗で<br class="sp-only">選んでいるような</p>
               <div>
@@ -161,21 +181,21 @@
                 <p>ライブ感</p>
               </div>
             </li>
-            <li>
+            <li class="fadeUpTrigger">
               <p>まるで商品を<br class="sp-only">手に取っているような</p>
               <div>
                 <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/realization/realization-check.svg" alt="">
                 <p>躍動感</p>
               </div>
             </li>
-            <li>
+            <li class="fadeUpTrigger">
               <p>ついつい<br class="sp-only">スワイプしたくなる</p>
               <div>
                 <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/realization/realization-check.svg" alt="">
                 <p>シズル感</p>
               </div>
             </li>
-            <li>
+            <li class="fadeUpTrigger">
               <p>スワイプした先に欲しいものを見つけた時の</p>
               <div>
                 <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/realization/realization-check.svg" alt="">
@@ -183,24 +203,24 @@
               </div>
             </li>
           </ul>
-          <p class="realization-text01">
+          <p class="realization-text01 fadeUpTrigger">
             CVRアップの鍵となるこれらの<br class="sp-only">ワクワク感が
           </p>
-          <p class="realization-text02">
+          <p class="realization-text02 fadeUpTrigger">
             <span>SwipeLPで全て実現</span><br class="sp-only">できます!!
           </p>
         </div>
       </section>
       <section class="cvr">
-        <h2 class="sub-title">
+        <h2 class="sub-title fadeUpTrigger">
           スマートフォンユーザーの<br class="sp-only" />CVRを上げることが<br class="pc-only" />
           必須の時代
         </h2>
-        <p class="cvr-text">
+        <p class="cvr-text fadeUpTrigger">
           ユーザーは「調べる」際にPCではなくスマートフォンを使用することが主流となっています。<br />
           大多数がスマートフォンを使用してHPに訪問しているため、スマートフォンからのCVRを向上させることが必須です！
         </p>
-        <div class="cvr-chart">
+        <div class="cvr-chart fadeUpTrigger">
           <p class="cvr-chart-title">デバイス別HP流入数</p>
           <p class="cvr-chart-text">モバイルからの流入が<span>85%</span>以上!!</p>
           <ul class="cvr-chart-list">
@@ -229,25 +249,25 @@
       <section class="banner banner-light-blue">
         <div class="banner-inner">
           <div class="banner-inner-left">
-            <p class="banner-inner-left-text01">
+            <p class="banner-inner-left-text01 fadeUpTrigger">
               ワクワク感を提供できるSwipeLPを使えば
             </p>
-            <p class="banner-inner-left-text02">
+            <p class="banner-inner-left-text02 fadeUpTrigger">
               <span>CVRの向上を実現</span>できます！
             </p>
-            <a href="https://fukko.jp/contact/" class="banner-inner-left-button" target="_blank">
+            <a href="https://fukko.jp/contact/" class="banner-inner-left-button fadeUpTrigger" target="_blank">
               お問い合わせはこちら
             </a>
           </div>
           <div class="banner-inner-right">
-            <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/banner/banner-01.png" alt="">
+            <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/banner/banner-01.png" class="flipLeftTrigger" alt="">
           </div>
         </div>
       </section>
       <section class="feature">
-        <h2 class="sub-title">SwipeLPの特長</h2>
+        <h2 class="sub-title fadeUpTrigger">SwipeLPの特長</h2>
         <div class="feature-01">
-          <div class="feature-odd-inner">
+          <div class="feature-odd-inner slideInFromLeftTrigger">
             <div class="feature-odd-left">
               <div class="feature-point">
                 <div class="circle"></div>
@@ -266,7 +286,7 @@
           </div>
         </div>
         <div class="feature-even">
-          <div class="feature-even-inner">
+          <div class="feature-even-inner slideInFromRightTrigger">
             <div class="feature-even-left">
               <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/feature/feature-02.png" alt="">
             </div>
@@ -286,7 +306,7 @@
           </div>
         </div>
         <div class="feature-03">
-          <div class="feature-odd-inner feature-03-inner">
+          <div class="feature-odd-inner feature-03-inner slideInFromLeftTrigger">
             <div class="feature-odd-left">
               <div class="feature-point">
                 <div class="circle"></div>
@@ -304,7 +324,7 @@
           </div>
         </div>
         <div class="feature-even">
-          <div class="feature-even-inner">
+          <div class="feature-even-inner slideInFromRightTrigger">
             <div class="feature-even-left">
               <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/feature/feature-04.png" alt="">
             </div>
@@ -325,24 +345,24 @@
         </div>
       </section>
       <section class="delivery">
-        <h2 class="sub-title">SwipeLP配信事例</h2>
+        <h2 class="sub-title fadeUpTrigger">SwipeLP配信事例</h2>
         <ul class="delivery-list">
           <li>
-            <div class="delivery-case">
+            <div class="delivery-case fadeUpTrigger">
               <div class="circle"></div>
               <p>case01</p>
             </div>
-            <h3>かねふくめんたいパーク<br class="sp-only">群馬店様</h3>
+            <h3 class="fadeUpTrigger">かねふくめんたいパーク<br class="sp-only">群馬店様</h3>
             <div class="delivery-case01-inner pc-only">
-              <div class="delivery-case01-inner-left">
+              <div class="delivery-case01-inner-left fadeUpTrigger">
                 <p>通常サイト</p>
-                <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/delivery/delivery-item01-01.png" alt="">
+                <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/delivery/delivery-item01-01.png" class="flipLeftTrigger" alt="">
               </div>
-              <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/delivery/delivery-arrow.svg" class="delivery-case01-inner-arrow" alt="">
-              <div class="delivery-case01-inner-right">
+              <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/delivery/delivery-arrow.svg" class="delivery-case01-inner-arrow fadeUpTrigger" alt="">
+              <div class="delivery-case01-inner-right fadeUpTrigger">
                 <div class="delivery-case01-inner-right-left">
                   <p>SwipeLP</p>
-                  <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/delivery/delivery-item01-02.png" alt="">
+                  <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/delivery/delivery-item01-02.png" class="flipLeftTrigger" alt="">
                 </div>
                 <div class="delivery-case01-inner-right-right">
                   <div class="delivery-case01-inner-right-right-textArea">
@@ -352,12 +372,12 @@
                   </div>
                   <div class="delivery-case01-inner-right-right-qr">
                     <p>実際のサイトはこちらから</p>
-                    <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/delivery/delivery-item01-qr.png" alt="">
+                    <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/delivery/delivery-item01-qr.png" class="flipLeftTrigger" alt="">
                   </div>
                 </div>
               </div>
             </div>
-            <div class="delivery-inner-sp sp-only">
+            <div class="delivery-inner-sp sp-only fadeUpTrigger">
               <p class="delivery-inner-textArea01-sp">
                 ワクワクポイント
               </p>
@@ -379,21 +399,21 @@
             </div>
           </li>
           <li>
-            <div class="delivery-case">
+            <div class="delivery-case fadeUpTrigger">
               <div class="circle"></div>
               <p>case02</p>
             </div>
-            <h3>アップルホーム様</h3>
+            <h3 class="fadeUpTrigger">アップルホーム様</h3>
             <div class="delivery-case01-inner pc-only">
-              <div class="delivery-case01-inner-left">
+              <div class="delivery-case01-inner-left fadeUpTrigger">
                 <p>通常サイト</p>
-                <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/delivery/delivery-item02-01.png" alt="">
+                <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/delivery/delivery-item02-01.png" class="flipLeftTrigger" alt="">
               </div>
-              <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/delivery/delivery-arrow.svg" class="delivery-case01-inner-arrow" alt="">
-              <div class="delivery-case01-inner-right">
+              <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/delivery/delivery-arrow.svg" class="delivery-case01-inner-arrow fadeUpTrigger" alt="">
+              <div class="delivery-case01-inner-right fadeUpTrigger">
                 <div class="delivery-case01-inner-right-left">
                   <p>SwipeLP</p>
-                  <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/delivery/delivery-item02-02.png" alt="">
+                  <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/delivery/delivery-item02-02.png" class="flipLeftTrigger" alt="">
                 </div>
                 <div class="delivery-case01-inner-right-right">
                   <div class="delivery-case01-inner-right-right-textArea">
@@ -403,12 +423,12 @@
                   </div>
                   <div class="delivery-case01-inner-right-right-qr">
                     <p>実際のサイトはこちらから</p>
-                    <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/delivery/delivery-item02-qr.png" alt="">
+                    <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/delivery/delivery-item02-qr.png" class="flipLeftTrigger" alt="">
                   </div>
                 </div>
               </div>
             </div>
-            <div class="delivery-inner-sp sp-only">
+            <div class="delivery-inner-sp sp-only fadeUpTrigger">
               <p class="delivery-inner-textArea01-sp">
                 ワクワクポイント
               </p>
@@ -430,21 +450,21 @@
             </div>
           </li>
           <li>
-            <div class="delivery-case">
+            <div class="delivery-case fadeUpTrigger">
               <div class="circle"></div>
               <p>case03</p>
             </div>
-            <h3>WE HUB様</h3>
+            <h3 class="fadeUpTrigger">WE HUB様</h3>
             <div class="delivery-case01-inner pc-only">
-              <div class="delivery-case01-inner-left">
+              <div class="delivery-case01-inner-left fadeUpTrigger">
                 <p>通常サイト</p>
-                <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/delivery/delivery-item03-01.png" alt="">
+                <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/delivery/delivery-item03-01.png" class="flipLeftTrigger" alt="">
               </div>
-              <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/delivery/delivery-arrow.svg" class="delivery-case01-inner-arrow" alt="">
-              <div class="delivery-case01-inner-right">
+              <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/delivery/delivery-arrow.svg" class="delivery-case01-inner-arrow fadeUpTrigger" alt="">
+              <div class="delivery-case01-inner-right fadeUpTrigger">
                 <div class="delivery-case01-inner-right-left">
                   <p>SwipeLP</p>
-                  <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/delivery/delivery-item03-02.png" alt="">
+                  <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/delivery/delivery-item03-02.png" class="flipLeftTrigger" alt="">
                 </div>
                 <div class="delivery-case01-inner-right-right">
                   <div class="delivery-case01-inner-right-right-textArea">
@@ -454,12 +474,12 @@
                   </div>
                   <div class="delivery-case01-inner-right-right-qr">
                     <p>実際のサイトはこちらから</p>
-                    <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/delivery/delivery-item03-qr.png" alt="">
+                    <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/delivery/delivery-item03-qr.png" class="flipLeftTrigger" alt="">
                   </div>
                 </div>
               </div>
             </div>
-            <div class="delivery-inner-sp sp-only">
+            <div class="delivery-inner-sp sp-only fadeUpTrigger">
               <p class="delivery-inner-textArea01-sp">
                 ワクワクポイント
               </p>
@@ -485,27 +505,27 @@
       <section class="banner banner-dark-blue">
         <div class="banner-inner">
           <div class="banner-inner-left">
-            <p class="banner-inner-left-text01">
+            <p class="banner-inner-left-text01 fadeUpTrigger">
               ワクワク感を提供できるSwipeLPを使えば
             </p>
-            <p class="banner-inner-left-text02">
+            <p class="banner-inner-left-text02 fadeUpTrigger">
               <span>CVRの向上を実現</span>できます！
             </p>
-            <a href="<?php echo esc_url(home_url('/reservation')); ?>" class="banner-inner-left-button" target="_blank">
+            <a href="<?php echo esc_url(home_url('/reservation')); ?>" class="banner-inner-left-button fadeUpTrigger" target="_blank">
               <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/sidebar/sidebar-mail.svg" alt="">
               無料デモ作成依頼はこちらから
             </a>
           </div>
-          <div class="banner-inner-right">
+          <div class="banner-inner-right flipLeftTrigger">
             <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/banner/banner-01.png" alt="">
           </div>
         </div>
       </section>
       <section class="delivery-banner">
         <div class="delivery-banner-inner">
-          <h2 class="sub-title">SwipeLPデモ画面</h2>
+          <h2 class="sub-title fadeUpTrigger">SwipeLPデモ画面</h2>
           <ul>
-            <li>
+            <li class="fadeUpTrigger">
               <div class="delivery-banner-head">
                 <h3>SAMPLE01</h3>
               </div>
@@ -514,14 +534,14 @@
                 <div class="delivery-banner-body-inner">
                   <div class="delivery-banner-left">
                     <p class="pc-only">宿泊サイト例</p>
-                    <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/delivery/delivery-banner-01.png" alt="">
+                    <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/delivery/delivery-banner-01.png" class="flipLeftTrigger" alt="">
                   </div>
                   <div class="delivery-banner-right">
                     <p class="delivery-banner-right-text01">ワクワクポイント</p>
                     <p class="delivery-banner-right-text02">実際にホテルに<br />いるような</p>
                     <p class="delivery-banner-right-text03">ライブ感</p>
                     <p class="delivery-banner-right-text04 pc-only">デモサイトはこちらから</p>
-                    <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/delivery/delivery-banner-qr.png" class="pc-only" alt="">
+                    <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/delivery/delivery-banner-qr.png" class="pc-only flipLeftTrigger" alt="">
                     <a href="https://demo.swipe-lp.io/?id=13" class="delivery-banner-right-button sp-only" target="_blank">
                       デモサイトを見る
                     </a>
@@ -529,7 +549,7 @@
                 </div>
               </div>
             </li>
-            <li>
+            <li class="fadeUpTrigger">
               <div class="delivery-banner-head">
                 <h3>SAMPLE02</h3>
               </div>
@@ -538,14 +558,14 @@
                 <div class="delivery-banner-body-inner">
                   <div class="delivery-banner-left">
                     <p class="pc-only">美容室サイト</p>
-                    <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/delivery/delivery-banner-02.png" alt="">
+                    <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/delivery/delivery-banner-02.png" class="flipLeftTrigger" alt="">
                   </div>
                   <div class="delivery-banner-right">
                     <p class="delivery-banner-right-text01">ワクワクポイント</p>
                     <p class="delivery-banner-right-text02">なりたい髪型を<br />見つけたときの</p>
                     <p class="delivery-banner-right-text03">満足感</p>
                     <p class="delivery-banner-right-text04 pc-only">デモサイトはこちらから</p>
-                    <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/delivery/delivery-banner-qr-02.png" class="pc-only" alt="">
+                    <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/delivery/delivery-banner-qr-02.png" class="pc-only flipLeftTrigger" alt="">
                     <a href="https://demo.swipe-lp.io/?id=26" class="delivery-banner-right-button sp-only" target="_blank">
                       デモサイトを見る
                     </a>
@@ -553,7 +573,7 @@
                 </div>
               </div>
             </li>
-            <li>
+            <li class="fadeUpTrigger">
               <div class="delivery-banner-head">
                 <h3>SAMPLE03</h3>
               </div>
@@ -562,14 +582,14 @@
                 <div class="delivery-banner-body-inner">
                   <div class="delivery-banner-left">
                     <p class="pc-only">自動車メーカーサイト</p>
-                    <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/delivery/delivery-banner-03.png" alt="">
+                    <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/delivery/delivery-banner-03.png" class="flipLeftTrigger" alt="">
                   </div>
                   <div class="delivery-banner-right">
                     <p class="delivery-banner-right-text01">ワクワクポイント</p>
                     <p class="delivery-banner-right-text02">店舗で<br />選んでいるかのような</p>
                     <p class="delivery-banner-right-text03">躍動感</p>
                     <p class="delivery-banner-right-text04 pc-only">デモサイトはこちらから</p>
-                    <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/delivery/delivery-banner-qr-03.png" class="pc-only" alt="">
+                    <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/delivery/delivery-banner-qr-03.png" class="pc-only flipLeftTrigger" alt="">
                     <a href="https://demo.swipe-lp.io/?id=16" class="delivery-banner-right-button sp-only" target="_blank">
                       デモサイトを見る
                     </a>
@@ -583,17 +603,17 @@
       <section class="banner banner-light-blue">
         <div class="banner-inner">
           <div class="banner-inner-left">
-            <p class="banner-inner-left-text01">
+            <p class="banner-inner-left-text01 fadeUpTrigger">
               ワクワク感を提供できるSwipeLPを使えば
             </p>
-            <p class="banner-inner-left-text02">
+            <p class="banner-inner-left-text02 fadeUpTrigger">
               <span>CVRの向上を実現</span>できます！
             </p>
-            <a href="https://fukko.jp/contact/" class="banner-inner-left-button" target="_blank">
+            <a href="https://fukko.jp/contact/" class="banner-inner-left-button fadeUpTrigger" target="_blank">
               お問い合わせはこちら
             </a>
           </div>
-          <div class="banner-inner-right">
+          <div class="banner-inner-right flipLeftTrigger">
             <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/banner/banner-01.png" alt="">
           </div>
         </div>
@@ -601,38 +621,39 @@
       <section class="price">
         <ul class="price-list">
           <li>
-            <h2 class="sub-title">広告セット料金プラン<br class="sp-only">
+            <h2 class="sub-title fadeUpTrigger">広告セット料金プラン<br class="sp-only">
               （特別キャンペーン価格）</h2>
-            <p class="price-text">リリース直後なので特別キャンペーン価格にてご提案しております！<br />4パターンのLPを作成しテスト配信を行えるサブスクリプションプランがおすすめです。</p>
-            <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/price/price-table-02.png" class="pc-only" alt="">
-            <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/price/price-table-02-sp.png" class="sp-only" alt="">
+            <p class="price-text fadeUpTrigger">リリース直後なので特別キャンペーン価格にてご提案しております！<br />4パターンのLPを作成しテスト配信を行えるサブスクリプションプランがおすすめです。</p>
+            <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/price/price-table-02.png" class="pc-only flipLeftTrigger" alt="">
+            <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/price/price-table-02-sp.png" class="sp-only flipLeftTrigger" alt="">
           </li>
           <li>
-            <h2 class="sub-title">SwipeLP単体料金プラン<br class="sp-only">（特別キャンペーン価格）</h2>
-            <p class="price-text">リリース直後なので特別キャンペーン価格にてご提案しております！<br />4パターンのLPを作成しテスト配信を行えるサブスクリプションプランがおすすめです。</p>
-            <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/price/price-table-01.png" class="pc-only" alt="">
-            <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/price/price-table-01-sp.png" class="sp-only" alt="">
+            <h2 class="sub-title fadeUpTrigger">SwipeLP単体料金プラン<br class="sp-only">（特別キャンペーン価格）</h2>
+            <p class="price-text fadeUpTrigger">リリース直後なので特別キャンペーン価格にてご提案しております！<br />4パターンのLPを作成しテスト配信を行えるサブスクリプションプランがおすすめです。</p>
+            <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/price/price-table-01.png" class="pc-only flipLeftTrigger" alt="">
+            <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/price/price-table-01-sp.png" class="sp-only flipLeftTrigger" alt="">
           </li>
         </ul>
       </section>
       <section class="contact">
-        <h2 class="sub-title">お気軽に<br class="sp-only">お問い合わせください</h2>
-        <p class="contact-text">
+        <h2 class="sub-title fadeUpTrigger">お気軽に<br class="sp-only">お問い合わせください</h2>
+        <p class="contact-text fadeUpTrigger">
           お客様ひとりひとり、ユーザーひとりひとり価値観も違えば、思考も異なります。<br />
           それをすべて理解することは非常に困難なこと。<br />
           私たちはそれに挑戦し続けることで、新しい未来があると信じております。<br />
           まずはお気軽にお話をお聞かせください。
         </p>
-        <ul>
+        <ul class="fadeUpTrigger">
           <li>
             <a href="https://fukko.jp/contact/" target="_blank">
               <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/contact/contact-mail.svg" alt="">
-              <p>メールでの<br />お問い合わせはこちら</p>
+              <p>フォームからの<br />お問い合わせはこちら</p>
             </a>
           </li>
           <li>
             <a href="https://www.chatwork.com/fukko_SwipeLP" target="_blank">
-              <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/contact/contact-chatwork.svg" alt="">
+              <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/contact/contact-chatwork.svg" class="pc-only" alt="">
+              <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/contact/contact-chatwork-sp.svg" class="sp-only" alt="">
               <p>チャットワークでの<br />お問い合わせはこちら</p>
             </a>
           </li>
@@ -642,40 +663,40 @@
               <p>LINEでの<br />お問い合わせはこちら</p>
             </a>
           </li>
+          <li>
+            <a href="https://fukko-swipelp.noco.sale/share/d/01J1P87JMKB3SZMSCH5QZ4JH8T" target="_blank">
+              <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/contact/contact-pdf.svg" alt="">
+              <p>資料ダウンロードは<br />こちらから</p>
+            </a>
+          </li>
         </ul>
       </section>
       <footer class="footer">
         <div class="footer-inner">
           <div class="footer-left">
-            <h3>株式会社FUKKO</h3>
-            <p class="footer-left-text01">〒171-0014 東京都豊島区池袋2丁目67-1<br class="sp-only"> シティハウスノヴァ502</p>
-            <p class="footer-left-text02">お電話でのお問い合わせはこちらから</p>
-            <a href="tel:03-6384-0300">03-6384-0300</a>
+            <h3 class="fadeUpTrigger">株式会社FUKKO</h3>
+            <p class="footer-left-text01 fadeUpTrigger">〒171-0014 東京都豊島区池袋2丁目67-1<br class="sp-only"> シティハウスノヴァ502</p>
+            <a class="footer-left-text02 fadeUpTrigger" href="https://fukko.jp/" target="_blank">
+              <span>株式会社FUKKOコーポレートサイトへ</span>
+              <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/footer/footer-link.svg" alt="">
+            </a>
+            <p class="footer-left-text03 fadeUpTrigger">お電話でのお問い合わせはこちらから</p>
+            <a class="footer-phoneNumber fadeUpTrigger" href="tel:03-6384-0300">03-6384-0300</a>
           </div>
           <div class="footer-right">
-            <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/footer/footer-logo.png" alt="">
-            <p>&copy;株式会社FUKKO Inc. All Rights Reserved.</p>
+            <a href="https://fukko.jp/" target="_blank">
+              <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/footer/footer-logo.png" class="flipLeftTrigger" alt="">
+            </a>
+            <p class="fadeUpTrigger">&copy;株式会社FUKKO Inc. All Rights Reserved.</p>
           </div>
         </div>
       </footer>
     </main>
     <sidebar class="sidebar hidden">
-      <!-- <div class="sidebar-inner">
-        <img src="https://fukko.jp/wp-content/themes/fukko/swipeLP/img/sidebar/sidebar-01.png" alt="">
-        <div class="sidebar-demo">
-          <img src="https://fukko.jp/wp-content/themes/fukko/swipeLP/img/sidebar/sidebar-mobile.png" alt="">
-          <iframe src="https://demo.swipe-lp.io/?id=13"></iframe>
-        </div>
-        <a href="https://fukko.jp/reservation" class="pc-only" target="_blank">
-          <img src="https://fukko.jp/wp-content/themes/fukko/swipeLP/img/sidebar/sidebar-mail.svg" alt="">
-          無料デモ作成依頼はこちらから
-        </a>
-      </div> -->
       <div class="sidebar-inner pc-only">
-        <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/sidebar/sidebar-01.png" alt="">
+        <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/sidebar/sidebar-01.png" class="sidebar-image" alt="">
         <div class="sidebar-demo">
-          <!-- スマホの画像一旦削除 -->
-          <!-- <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/sidebar/sidebar-mobile.png" alt=""> -->
+          <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/sidebar/sidebar-mobile.png" alt="">
           <iframe src="https://demo.swipe-lp.io/?id=13"></iframe>
         </div>
         <a href="<?php echo esc_url(home_url('/reservation')); ?>" class="pc-only" target="_blank">

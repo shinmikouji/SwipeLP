@@ -13,11 +13,11 @@
   <link href="https://fonts.googleapis.com/css?family=Karla&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
   <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
-  <!-- fv.jp -->	  
+  <!-- fv.jp -->
   <script>
-  document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function() {
       sliderStart(); // ドキュメントが読み込まれたら sliderStart 関数を呼び出す
-  });
+    });
   </script>
   <!-- facebook -->
   <!-- <meta name="facebook-domain-verification" content="4a8pu3cvgns498rg6en4kzbxsjouk9" /> -->
@@ -79,9 +79,10 @@
   } else if (is_page() || is_single()) {
     $canonical_url = get_permalink();
   }
-  if ($paged >= 2 || $page >= 2) {
-    $canonical_url = $canonical_url . 'page/' . max($paged, $page) . '/';
-  }
+  // $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+  // if ($paged >= 2) {
+  //   $canonical_url = $canonical_url . 'page/' . $paged . '/';
+  // }
   ?>
   <?php if (!(is_404())) : ?>
     <link rel="canonical" href="<?php echo $canonical_url; ?>" />

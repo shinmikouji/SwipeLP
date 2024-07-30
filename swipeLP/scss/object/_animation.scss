@@ -1,0 +1,74 @@
+// フェードイン（ふわっ（下から））
+.fadeUp {
+  animation-name: fadeUpAnime;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeUpAnime {
+  0% {
+    transform: translateY(80px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+// 画像に使う（パタッ（左へ））
+.flipLeft {
+  animation-name: flipLeftAnime;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  perspective-origin: left center;
+}
+
+@keyframes flipLeftAnime {
+  0% {
+    transform: perspective(600px) translate3d(0, 0, 0) rotateY(30deg);
+    opacity: 0;
+  }
+
+  100% {
+    transform: perspective(600px) translate3d(0, 0, 0) rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+// スライドイン（左から）
+.slideInFromLeft {
+  animation-name: slideInFromLeftAnime;
+  animation-duration: 2.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slideInFromLeftAnime {
+  0% {
+    opacity: 0;
+    transform: translateX(-2000px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// スライドイン（右から）
+.slideInFromRight {
+  animation-name: slideInFromRightAnime;
+  animation-duration: 2.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slideInFromRightAnime {
+  0% {
+    opacity: 0;
+    transform: translateX(2000px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

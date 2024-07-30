@@ -1,9 +1,9 @@
 <?php get_header(''); ?>
 
-<?php
+<!-- <?php
 global $post;
 $slug = $post->post_name;
-?>
+?> -->
 
 
 <main class="main__page__download">

@@ -26,16 +26,32 @@
     //   width: 80%;
     // }
 
-    img {
-      width: 80%;
+    .sidebar-image {
+      animation: sidebar_img 5s linear infinite;
+      transform-origin: bottom center;
+      width: 69%;
+    }
 
-      // @include m.mq(sp) {
-      //   width: 75%;
-      // }
+    @keyframes sidebar_img {
+
+      0%,
+      8%,
+      16%,
+      100% {
+        transform: rotate(0deg);
+      }
+
+      4% {
+        transform: rotate(-5deg) scale(1.05);
+      }
+
+      12% {
+        transform: rotate(5deg) scale(1.05);
+      }
     }
 
     .sidebar-demo {
-      height: 60vh;
+      height: 62vh;
       left: 0;
       position: relative;
       top: 0;
@@ -43,58 +59,46 @@
       z-index: 98;
 
       @include m.mq(tab) {
-        height: 40vh;
-      }
-
-      @include m.mq(sp) {
-        height: 70vh;
+        height: 42.4vh;
       }
 
       @include m.mq(sidebarPc) {
-        height: 51vh;
+        height: 48.8vh;
       }
 
-      // スマホの画像一旦削除
-      // img {
-      //   height: 60.3vh;
-      //   left: 50%;
-      //   position: absolute;
-      //   transform: translate(-50%, 0);
-      //   width: 16vw;
-
-      //   @include m.mq(tab) {
-      //     height: 40.3vh;
-      //   }
-
-      //   @include m.mq(sp) {
-      //     height: 70vh;
-      //     width: 65vw;
-      //   }
-
-      //   @include m.mq(sidebarPc) {
-      //     height: 50vh;
-      //   }
-      // }
-
-      iframe {
-        width: 14.7vw;
-        height: 48.6vh;
+      img {
+        height: 62vh;
         left: 50%;
         position: absolute;
         transform: translate(-50%, 0);
-        top: 9.8%;
+        width: 77%;
 
         @include m.mq(tab) {
-          height: 31.1vh;
-        }
-
-        @include m.mq(sp) {
-          height: 56.3vh;
-          width: 58.7vw;
+          height: 42.7vh;
+          width: 80%;
         }
 
         @include m.mq(sidebarPc) {
-          height: 39.3vh;
+          height: 49.3vh;
+        }
+      }
+
+      iframe {
+        height: 48vh;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, 0);
+        top: 13%;
+        width: 71%;
+
+        @include m.mq(tab) {
+          height: 33vh;
+          width: 73.6%;
+        }
+
+        @include m.mq(sidebarPc) {
+          height: 38vh;
+          width: 69%;
         }
       }
     }
@@ -104,14 +108,18 @@
       background: linear-gradient(to right, #d751dd, #8916c7);
       border-radius: 5px;
       color: #fff;
-      display: grid;
-      font-size: 0.95vw;
+      display: flex;
+      font-size: 1vw;
       font-weight: bold;
-      gap: 0.4vw;
-      grid-template-columns: max-content 1fr;
-      margin: 3.5vw auto 0;
-      padding: 0.75vw 1vw;
-      width: 85%;
+      justify-content: center;
+      gap: 0.7vw;
+      margin: 2vw auto 0;
+      padding: 1vw;
+      width: 90%;
+
+      img {
+        width: 2.4vw;
+      }
     }
   }
 

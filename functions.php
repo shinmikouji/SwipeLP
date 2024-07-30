@@ -268,3 +268,27 @@ function load_recaptcha_js()
   }
 }
 add_action('wp_enqueue_scripts', 'load_recaptcha_js', 100);
+
+function get_first_image_or_default($post_content) {
+  $default_image = get_template_directory_uri() . '/swipeLP/img/thumbnail.png';
+
+  // パターンマッチングを使って最初の画像を取得
+  preg_match('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post_content, $matches);
+
+  if (!empty($matches[1])) {
+      return $matches[1];
+  } else {
+      return $default_image;
+  }
+}
+
+function remove_custom_post_type_menu() {
+  remove_menu_page('edit.php?post_type=swipelp-news');
+}
+add_action('admin_menu', 'remove_custom_post_type_menu');
+
+function disable_auto_thumbnail_dimensions() {
+  add_theme_support('post-thumbnails');
+  add_image_size('custom-thumb', 0, 0, false); // サイズを無制限に設定
+}
+add_action('after_setup_theme', 'disable_auto_thumbnail_dimensions');

@@ -9,8 +9,10 @@
 @use "../scss/layout/sidebar";
 
 // object
+@use "../scss/object/animation";
 @use "../scss/object/sub-title";
 @use "../scss/object/display";
 
 // pages
 @use "../scss/pages/top";
+@use "../scss/pages/news";
