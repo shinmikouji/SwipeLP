@@ -72,6 +72,11 @@
           </div>
           <p class="introduction-title-text">スマホ特化型フルスクリーン<br class="sp-only">エキサイティングページ</p>
           <h1 class="introduction-title-image"><img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/introduction/title.jpg" alt=""></h1>
+          <div class="introduction-tokkyo">
+            <img src="<?php echo get_template_directory_uri(); ?>/swipeLP/img/introduction/check.png" alt="">
+            <p class="introduction-tokkyo-text">UI特許取得済</p>
+            <p class="introduction-tokkyo-number">第7442772号</p>
+          </div>
           <p class="introduction-bottom-text">
             実店舗で商品を選んでいるようなワクワク感を<br class="sp-only">Web上で実現できる<br />
             スマートフォンに最適化した次世代型LPです。<br />

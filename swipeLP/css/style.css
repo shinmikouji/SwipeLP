@@ -616,6 +616,61 @@ header .header-logo {
     width: 233px;
   }
 }
+.introduction .introduction-left .introduction-tokkyo {
+  align-items: center;
+  background-color: #F6FAFC;
+  border: 1px solid #07C1D0;
+  border-radius: 26px;
+  display: flex;
+  font-weight: bold;
+  line-height: 1;
+  margin-top: 0.9vw;
+  padding: 0.55vw 1.1vw;
+  width: fit-content;
+}
+@media screen and (max-width: 767px) {
+  .introduction .introduction-left .introduction-tokkyo {
+    justify-content: center;
+    margin: 16px auto 0;
+    padding: 7px 13px;
+    width: 254px;
+  }
+}
+.introduction .introduction-left .introduction-tokkyo img {
+  width: 2vw;
+}
+@media screen and (max-width: 767px) {
+  .introduction .introduction-left .introduction-tokkyo img {
+    width: 27px;
+  }
+}
+.introduction .introduction-left .introduction-tokkyo .introduction-tokkyo-text {
+  color: #1A2F53;
+  font-size: 1.22vw;
+  margin-left: 0.545vw;
+}
+@media screen and (max-width: 767px) {
+  .introduction .introduction-left .introduction-tokkyo .introduction-tokkyo-text {
+    font-size: 15px;
+    margin-left: 7px;
+  }
+}
+.introduction .introduction-left .introduction-tokkyo .introduction-tokkyo-number {
+  background-color: #07C1D0;
+  border-radius: 30px;
+  color: #fff;
+  font-size: 1vw;
+  line-height: 1;
+  margin-left: 1.2vw;
+  padding: 0.55vw 0.95vw;
+}
+@media screen and (max-width: 767px) {
+  .introduction .introduction-left .introduction-tokkyo .introduction-tokkyo-number {
+    font-size: 12px;
+    margin-left: 7px;
+    padding: 5px 10px;
+  }
+}
 .introduction .introduction-left .introduction-bottom-text {
   color: #1a2f53;
   font-size: 1vw;
